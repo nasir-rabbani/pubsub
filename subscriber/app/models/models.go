@@ -1,5 +1,17 @@
 package models
 
+// MsgData - The model to Map the message received from MQ
+type MsgData struct {
+	Offers []Offers `json:"offers"`
+}
+
+// Offers - Model to hold Offers object
+type Offers struct {
+	Hotel    Hotel    `json:"hotel"`
+	Room     Room     `json:"room"`
+	RatePlan RatePlan `json:"rate_plan"`
+}
+
 // Hotel - Model to hold Hotel Object
 type Hotel struct {
 	HotelID   string  `json:"hotel_id" gorm:"type:varchar(20);primaryKey"`
@@ -17,12 +29,6 @@ type Hotel struct {
 	RatePlan    []RatePlan `json:"rate_plan" gorm:"foreignkey:HotelID;references:HotelID"`
 }
 
-// Capacity -
-type Capacity struct {
-	MaxAdults     int `json:"max_adults"`
-	ExtraChildren int `json:"extra_children"`
-}
-
 // Room - Model to hold Room Object
 type Room struct {
 	HotelID     string `json:"hotel_id" gorm:"type:varchar(20)"`
@@ -30,12 +36,6 @@ type Room struct {
 	Description string `json:"description" gorm:"type:varchar(500)"`
 	Name        string `json:"name"`
 	// Capacity    Capacity `json:"capacity"`
-}
-
-// CancellationPolicy -
-type CancellationPolicy struct {
-	Type              string `json:"type"`
-	ExpiresDaysBefore int    `json:"expires_days_before"`
 }
 
 // RatePlan - Model to hold RatePlan Object
@@ -48,14 +48,14 @@ type RatePlan struct {
 	MealPlan string `json:"meal_plan" gorm:"type:varchar(200)"`
 }
 
-// MsgData - The model to Map the message received from MQ
-type MsgData struct {
-	Offers []Offers `json:"offers"`
+// Capacity -
+type Capacity struct {
+	MaxAdults     int `json:"max_adults"`
+	ExtraChildren int `json:"extra_children"`
 }
 
-// Offers - Model to hold Offers object
-type Offers struct {
-	Hotel    Hotel    `json:"hotel"`
-	Room     Room     `json:"room"`
-	RatePlan RatePlan `json:"rate_plan"`
+// CancellationPolicy -
+type CancellationPolicy struct {
+	Type              string `json:"type"`
+	ExpiresDaysBefore int    `json:"expires_days_before"`
 }

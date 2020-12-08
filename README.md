@@ -12,21 +12,29 @@
 
 - Once done open `localhost:15672` for management console of rabbitMQ
 
-## Setting up the Database
-
-- Create a MySQL Database with name **pubsub**
-
-- Create a new user for that database with username & password as **pubsub**
-
 ## Running the project
 
-- Run the _Publisher_
+- Clone the project in your go workspace
+
+  ```git
+  git clone https://github.com/nasir-rabbani/pubsub.git
   ```
-  cd publisher
-  go run pub.go
+
+- Modify the .yaml files inside below locations as per your configurations before running
+
   ```
+  subscriber/configs
+
+  publisher/configs
+  ```
+
 - Run the _Subscriber_
+  ```go
+  cd subscriber
+  go run main.go
   ```
+- Run the _Publisher_
+  ```go
   cd publisher
-  go run pub.go
+  go run main.go
   ```

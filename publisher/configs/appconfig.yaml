@@ -1,0 +1,7 @@
+port: 8080
+filePath: '../input.json'
+amqpConfig:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
